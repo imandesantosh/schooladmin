@@ -1,0 +1,160 @@
+:host {
+  display: grid;
+
+  grid-gap: 0;
+
+  grid-template:
+      [nav-start]     " header            header "  auto
+                      " main              main   "  1fr  
+                      " footer            footer "  auto [nav-end]
+    / [nav-start]   225px [nav-end]   1fr
+  ;
+
+  height: 100vh;
+
+  padding: 0;
+  overflow: auto;
+}
+button {
+  grid-area: navToggle;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  margin-right: 15px;
+  padding: 0;
+}
+
+header {
+  grid-area: header;
+
+  display: grid;
+  // position: fixed;
+  grid-template:
+    " navToggle  title " auto
+    / auto       minmax(0, 1fr)
+  ;
+
+  background: linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+  padding: 15px;
+  // box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.33);
+ 
+
+
+  a {
+    grid-area: title;
+  }
+
+  h1 {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+nav {
+  grid-area: nav;
+
+  transform: translateX(-9999px);
+  position: fixed;
+  width: 250px;
+  height: 100vh;  
+  background: rgb(255, 255, 255);
+  border-right: 3px solid darkgrey;
+  padding: 15px;
+  overflow: auto;
+  z-index: 9;
+  & > * {
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  background: linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+  padding: 15px;
+  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.33);
+  z-index: 1;
+  position: static;
+  a {
+    color: grey;
+  }
+
+  // Separate footer links with bullet characters
+  a:not(:last-child)::after {
+    padding-left: 10px;
+    padding-right: 10px;
+    content: '\2022';
+  }
+}
+
+header, footer, nav {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.currentSelection {
+  font-weight: bold;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-500px); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-500px); }
+}
+
+.showNav {
+  animation: slideIn 500ms;
+  animation-fill-mode: forwards;
+}
+
+.hideNav {
+  animation: slideOut 500ms;
+  animation-fill-mode: forwards;
+}
+
+
+.hero {
+  background: linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+  padding: 4rem 2rem;
+}
+
+
+/* analytics styles */
+.analytics {
+  padding: 2rem;
+  margin-top:-150px;
+}
+
+.analytics > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+
+.analytics > ul > li {
+  border: 1px solid #E2E2E2;
+  border-radius: .1rem;
+  list-style: none;
+  background: #fff;
+}
+
+
+

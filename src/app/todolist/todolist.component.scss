@@ -1,0 +1,11 @@
+ ul {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
+    place-items: justify;
+  }
+  
+ ul > li {
+    border-bottom: 1px solid gray;
+    list-style: none;
+    background: #fff;
+  }

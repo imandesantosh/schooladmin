@@ -1,0 +1,68 @@
+<header>
+  <button (click)="showNav = !showNav" class="material-icons">
+    {{ showNav ? 'menu' : 'menu' }}
+  </button>
+
+  <!--
+    The unusual handling of showNav ensures that the nav animations are only
+    triggered at the appropriate points.
+  -->
+  <a routerLink="/" (click)="showNav = showNav ? false : showNav">
+    <h1>{{ title }}</h1>
+  </a>
+</header>
+
+<nav (click)="showNav = false" [class.showNav]="showNav" [class.hideNav]="showNav === false">
+  <button (click)="showNav = false" class="material-icons">
+    {{ showNav ? 'close' : 'close' }}
+  </button>
+
+  <a routerLink="/">
+    Home
+  </a>
+
+  <a routerLink="/addstudent">
+    Add Student
+  </a>
+
+  <a routerLink="/about">
+    About
+  </a>
+
+</nav>
+
+<main class="wrapper" (click)="showNav = showNav ? false : showNav">
+    
+  <section class="hero"></section>
+    <section class="analytics" id="schoolanalytics">
+      <ul>
+        <li>
+          <canvas id="barchart">{{chart1}}</canvas>
+        </li>
+        <li>
+          <canvas id="linechart">{{chart2}}</canvas>
+        </li>
+        <li>
+            <app-todolist></app-todolist>
+        </li>
+      </ul>
+    </section>
+  
+</main>
+
+<footer>
+
+  <a target="_blank" href="#">
+    About
+  </a>
+
+  <a target="_blank" href="#">
+    Calendar
+  </a>
+
+  <a target="_blank" href="#">
+    Admin
+  </a>
+
+</footer>
+
